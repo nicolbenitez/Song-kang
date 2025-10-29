@@ -1,105 +1,199 @@
-/* --- Fondo y estilo general --- */
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  background: black;
+:root{
+  --bg:#050507;
+  --card:#0e0e10;
+  --muted:#b8b8c0;
+  --accent:#9ad3ff;
+  --glass: rgba(255,255,255,0.03);
+  --radius:14px;
+  --maxwidth:1100px;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#f5f5f7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  overflow-x:hidden;
 }
 
-/* --- Contenedor principal --- */
-.container {
-  max-width: 900px;
-  margin: 80px auto;
-  background: rgba(0, 0, 0, 0.75);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+/* STARFIELD container sits behind content */
+#starfield{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
 }
 
-/* --- Títulos --- */
-h1 {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 10px;
+/* Page layout */
+.container{
+  width:95%;
+  max-width:var(--maxwidth);
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+  padding:28px 0;
 }
 
-h2 {
-  color: #f4d03f;
-  margin-top: 30px;
-  border-bottom: 1px solid #555;
-  padding-bottom: 8px;
+.site-header{
+  padding:48px 0 12px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.hero-title{
+  font-weight:700;
+  letter-spacing:0.6px;
+  margin:0;
+  font-size:2.6rem;
+}
+.hero-sub{margin:8px 0 0;color:var(--muted)}
+
+/* Cards */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border-radius:var(--radius);
+  padding:20px;
+  margin:20px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.03);
 }
 
-/* --- Texto de párrafo --- */
-p {
-  line-height: 1.7;
-  text-align: justify;
-  font-size: 1.1rem;
+/* Grid gallery */
+.grid-gallery{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+.grid-item{
+  overflow:hidden;
+  border-radius:10px;
+  cursor:zoom-in;
+  position:relative;
+  background:var(--glass);
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.grid-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition: transform .45s cubic-bezier(.2,.9,.3,1);
+  transform-origin:center;
 }
 
-/* --- Imagen principal del actor --- */
-.photo {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
+/* Zoom on hover */
+.grid-item:hover img{
+  transform:scale(1.12);
+  filter:brightness(1.02);
 }
 
-.photo img {
-  width: 280px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  transition: transform 0.4s;
+/* Responsive */
+@media (max-width:900px){
+  .grid-gallery{grid-template-columns: repeat(2, 1fr);}
+}
+@media (max-width:520px){
+  .grid-gallery{grid-template-columns: 1fr;}
+  .hero-title{font-size:1.9rem}
 }
 
-.photo img:hover {
-  transform: scale(1.05);
+/* Career list */
+.career-list{padding-left:18px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* Footer */
+.site-footer{
+  padding:18px 0 40px;
+  text-align:center;
+  color:var(--muted);
+  z-index:2;
 }
 
-/* --- Galería --- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
+/* Lightbox modal */
+.lightbox{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg, rgba(0,0,0,0.75), rgba(0,0,0,0.88));
+  z-index:40;
+  padding:30px;
+}
+.lightbox.show{display:flex}
+
+.lb-stage{
+  max-width:920px;
+  width:100%;
+  text-align:center;
+  position:relative;
+}
+.lb-stage img{
+  max-height:70vh;
+  width:auto;
+  max-width:100%;
+  border-radius:8px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+  display:block;
+  margin:0 auto 8px;
+}
+.lb-caption{color:var(--muted); margin-top:6px}
+
+/* controls */
+.lb-prev, .lb-next, .lb-close{
+  position:fixed;
+  background:transparent;
+  border:none;
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  z-index:50;
+  filter:drop-shadow(0 6px 16px rgba(0,0,0,0.6));
+}
+.lb-close{ top:26px; right:30px; font-size:36px; }
+.lb-prev{ left:18px; top:50%; transform:translateY(-50%); }
+.lb-next{ right:18px; top:50%; transform:translateY(-50%); }
+
+/* thumbnails inside lightbox */
+.lb-thumbs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding:10px 4px 0;
+  justify-content:center;
+  margin-top:14px;
+}
+.lb-thumbs img{
+  height:56px;
+  width:80px;
+  object-fit:cover;
+  border-radius:6px;
+  opacity:.7;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.lb-thumbs img.active{opacity:1; border-color:var(--accent)}
+
+/* subtle focus outline for keyboard users */
+button:focus, a:focus{
+  outline:3px solid rgba(154,211,255,0.12);
+  outline-offset:3px;
+  border-radius:6px;
 }
 
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 10px rgba(255,255,255,0.15);
+/* small screens: move controls inside */
+@media (max-width:640px){
+  .lb-prev, .lb-next{display:none}
+  .lb-close{right:12px; top:12px}
 }
 
-.gallery img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-}
-
-/* --- Referencias / lista --- */
-.references {
-  margin-top: 20px;
-  font-size: 1.1rem;
-}
-
-.references li {
-  margin-bottom: 8px;
-}
-
-/* --- Pie de página --- */
-footer {
-  text-align: center;
-  margin-top: 40px;
-  color: #aaa;
-  font-size: 0.9rem;
-}
+/* fine-tuning */
+p,ul,ol{color:#ececf0}
