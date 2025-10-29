@@ -1,60 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biografía de Song Kang</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biografía · Song Kang</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="stars"></canvas>
+  <!-- Estrellas (canvas) -->
+  <div id="starfield" aria-hidden="true"></div>
 
-  <div class="container">
-    <h1>🌟 Song Kang (송강)</h1>
-
-    <div class="photo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Song_Kang_at_2023_SBS_Drama_Awards.jpg" alt="Song Kang" />
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="hero-title">Song Kang</h1>
+      <p class="hero-sub">Actor surcoreano · Perfil, galería y trayectoria</p>
     </div>
+  </header>
 
-    <p>
-      <strong>Song Kang</strong> (송강) nació el <strong>23 de abril de 1994</strong> en <strong>Suwon, Gyeonggi-do, Corea del Sur</strong>. 
-      Es un reconocido actor surcoreano famoso por su talento, carisma y presencia en pantalla. 
-      Se graduó en la <strong>Universidad Konkuk</strong>, donde estudió Artes Cinematográficas.
-    </p>
+  <main class="container">
+    <!-- BIO -->
+    <section id="biography" class="card">
+      <h2>Biografía</h2>
+      <p>
+        Song Kang (송강) es un actor surcoreano conocido por su versatilidad y presencia en producciones televisivas y sesiones fotográficas. 
+        (Aquí puedes reemplazar este texto por la biografía completa que quieras — puedo ayudarte a redactarla si quieres.)
+      </p>
+    </section>
 
-    <h2>🧡 Carrera</h2>
-    <p>
-      Song Kang debutó como actor en 2017 en la serie <em>"The Liar and His Lover"</em>. 
-      Su popularidad creció rápidamente gracias a su papel en <em>"Love Alarm"</em> (2019-2021), 
-      uno de los primeros dramas originales de Netflix en Corea del Sur.  
-      Alcanzó fama internacional con la serie de terror <em>"Sweet Home"</em> (2020-2024). 
-      También protagonizó <em>"Navillera"</em> (2021), <em>"Nevertheless"</em> (2021) y 
-      <em>"Forecasting Love and Weather"</em> (2022). En 2023 protagonizó <em>"My Demon"</em>.
-    </p>
+    <!-- GALERÍA -->
+    <section id="gallery" class="card">
+      <h2>Galería</h2>
+      <p class="muted">Pasa el cursor para zoom. Haz clic para ver en carrusel.</p>
 
-    <h2>🖼 Galería</h2>
-    <div class="gallery">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Song_Kang_at_2023_SBS_Drama_Awards.jpg" alt="Song Kang galería 1">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Song_Kang_Photoshoot_for_Marie_Claire_Korea.png" alt="Song Kang galería 2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Song_Kang_Arena_Homme_Plus_Photoshoot.png" alt="Song Kang galería 3">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Song_Kang_Sweet_Home_Press_Conference_2020.jpg" alt="Song Kang galería 4">
+      <div class="grid-gallery" id="gridGallery">
+        <!-- Reemplaza/ajusta las rutas si cambias nombres -->
+        <figure class="grid-item" data-index="0">
+          <img src="images/img1.jpg" alt="Song Kang foto 1" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="1">
+          <img src="images/img2.jpg" alt="Song Kang foto 2" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="2">
+          <img src="images/img3.jpg" alt="Song Kang foto 3" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="3">
+          <img src="images/img4.jpg" alt="Song Kang foto 4" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="4">
+          <img src="images/img5.jpg" alt="Song Kang foto 5" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="5">
+          <img src="images/img6.jpg" alt="Song Kang foto 6" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="6">
+          <img src="images/img7.jpg" alt="Song Kang foto 7" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="7">
+          <img src="images/img8.jpg" alt="Song Kang foto 8" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="8">
+          <img src="images/img9.jpg" alt="Song Kang foto 9" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="9">
+          <img src="images/img10.jpg" alt="Song Kang foto 10" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="10">
+          <img src="images/img11.jpg" alt="Song Kang foto 11" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="11">
+          <img src="images/img12.jpg" alt="Song Kang foto 12" loading="lazy">
+        </figure>
+        <figure class="grid-item" data-index="12">
+          <img src="images/img13.jpg" alt="Song Kang foto 13" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- CARRERA -->
+    <section id="career" class="card">
+      <h2>Carrera</h2>
+      <ul class="career-list">
+        <li><strong>2017</strong> — Debut y primeros papeles menores (ej: cortos, apariciones).</li>
+        <li><strong>2019</strong> — Participación en series que ganaron visibilidad internacional.</li>
+        <li><strong>2020–2024</strong> — Protagonismo en dramas populares, aumento de presencia en campañas y sesiones fotográficas.</li>
+        <li><strong>2025</strong> — Season's Greetings y nuevas producciones (ejemplo: fotos que aparecen en la galería).</li>
+      </ul>
+      <p class="muted small">Puedes pedirme que reemplace esta sección con una línea de tiempo detallada y citas verificadas.</p>
+    </section>
+
+    <!-- REFERENCIAS -->
+    <section id="references" class="card">
+      <h2>Referencias</h2>
+      <ol>
+        <li>Agencia / Sitio oficial: Namo Actors (o la agencia que corresponda).</li>
+        <li>Entrevistas y perfiles (revistas, portales de entretenimiento).</li>
+        <li>Páginas de filmografía y bases de datos de entretenimiento.</li>
+      </ol>
+      <p class="muted small">Si quieres, busco y añado las referencias exactas (fuentes y enlaces) y te las cito correctamente.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Diseño: biografía estilo galería • Hecho con ❤</small>
     </div>
+  </footer>
 
-    <h2>📚 Referencias & Proyectos Destacados</h2>
-    <ul class="references">
-      <li><strong>Love Alarm</strong> (넷플릭스 오리지널, 2019-2021)</li>
-      <li><strong>Sweet Home</strong> (넷플릭스 오리지널, 2020-2024)</li>
-      <li><strong>Navillera</strong> (2021)</li>
-      <li><strong>Nevertheless</strong> (2021)</li>
-      <li><strong>Forecasting Love and Weather</strong> (2022)</li>
-      <li><strong>My Demon</strong> (2023)</li>
-    </ul>
+  <!-- Lightbox / Carrusel Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Visor de imágenes">
+    <button class="lb-close" aria-label="Cerrar" id="lbClose">&times;</button>
+    <button class="lb-prev" aria-label="Anterior" id="lbPrev">&#10094;</button>
+    <div class="lb-stage">
+      <img id="lbImage" alt="Imagen ampliada">
+      <p class="lb-caption" id="lbCaption"></p>
+    </div>
+    <button class="lb-next" aria-label="Siguiente" id="lbNext">&#10095;</button>
 
-    <footer>
-      © 2025 Biografía creada por Nicol Benítez ✨
-    </footer>
+    <div class="lb-thumbs" id="lbThumbs"></div>
   </div>
 
-  <script src="stars.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
